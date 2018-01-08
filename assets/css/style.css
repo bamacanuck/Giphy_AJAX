@@ -2,6 +2,10 @@
 	background: blue;
 }*/
 
+button {
+	margin: 1%;
+}
+
 #animals {
 
 }
@@ -10,7 +14,7 @@
 	float: left;
 	height: 600px;
 	width: 70%;
-	border: solid blue 4px;
+	/*border: 1px;*/
 }
 
 #animal-form {
