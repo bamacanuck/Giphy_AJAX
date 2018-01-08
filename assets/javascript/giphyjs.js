@@ -1,17 +1,15 @@
-// $(document).ready() {}
+$(function () {
+	console.log("page loaded")
+	buttonMaker(topics);
+})
 
-	$(function () {
-		console.log("page loaded")
-		buttonMaker();
-	})
+var topics = ["dog", "tiger", "monkey", "ape"];
 
-	var topics = ["dog", "tiger", "monkey", "ape"];
-
-	function buttonMaker (topics) {
-		$("#animalButtons").empty();
-		for (var i = 0; i < topics.length; i++) {
-			var x = $("<button>");
-			x.text(topics[i]);
-			$("#animalButtons").append(x);
-		}
+function buttonMaker (array) {
+	$("#animalButtons").empty();
+	for (var i = 0; i < array.length; i++) {
+		var x = $("<button>");
+		x.text(array[i]);
+		$("#animalButtons").append(x);
 	}
+}
