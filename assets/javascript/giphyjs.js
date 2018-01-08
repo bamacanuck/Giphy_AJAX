@@ -16,10 +16,10 @@ function buttonMaker (array) {
 	}
 }
 
-function makeCall (searchTerm) {
+function callAndRender (searchTerm) {
 	
 	$.ajax({
-        url: "http://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=" + apiKey + "&limit=10",
+        url: "https://api.giphy.com/v1/gifs/random?api_key=9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd&tag=" + searchTerm + "",
         method: "get"
       })
 
@@ -29,11 +29,27 @@ function makeCall (searchTerm) {
 
         console.log(response);
 
+        var imageUrl = response.data.image_original_url;
+
+        var displayGIF = $("<img>");
+
+        // using attribute methods to change sourcing, and the alt (what's displayed if there's no image to use)
+
+        displayGIF.attr("src", imageUrl);
+        displayGIF.attr("alt", "missing image");
+
+        // adding the image to the DOM, before the specified div (prepending, rather than appending)
+
+		$("#animals").append(displayGIF);
+
       });
 
 }
 
-makeCall("porg");
+callAndRender("porg");
+
+
+        // setting up a new image 'spot' for the 'incoming' GIF, for display via the DOM, here
 
 
 
