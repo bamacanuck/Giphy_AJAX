@@ -1,0 +1,21 @@
+/*body {
+	background: blue;
+}*/
+
+#animals {
+
+}
+
+#animalButtons {
+	float: left;
+	height: auto;
+	width: 70%;
+	border: solid blue 4px;
+}
+
+#animal-form {
+	float: right;
+	margin-right: 4%;
+	width: 20%;
+	/*font-size: 40px;*/
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>The Magical Jennifer C. Button</title>
+</head>
+
+<body>
+  <button id="RGButton">magical RG button</button>
+  <div id="images">
+  <button id="cat-button">magical JC button</button>
+  <div id="images">
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+
+      //javascript, jQuery
+
+      $("#RGButton").on("click", function() {
+
+        var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=dc6zaTOxFJmzC&limit=5");
+        xhr.done(function(response) {
+
+        // setting variable to represent one particular aspect of response (JSON) data
+
+        var imageUrl = response.data.image_original_url;
+
+        // setting up a new image 'spot' for the 'incoming' GIF, for display via the DOM, here
+
+        var RGImage = $("<img>");
+
+        // using attribute methods to change sourcing, and the alt (what's displayed if there's no image to use)
+
+        RGImage.attr("src", imageUrl);
+        RGImage.attr("alt", "RG image");
+
+        $("#images").append(RGImage);
+
+
+    //
+    $("#cat-button").on("click", function() {
+
+      // set URL for API call
+
+      var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=jennifer+connelly";
+
+      // use AJAX to make the API call
+
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+
+      // set instructions for after API response is received
+
+      .done(function(response) {
+
+        // setting variable to represent one particular aspect of response (JSON) data
+
+        var imageUrl = response.data.image_original_url;
+
+        // setting up a new image 'spot' for the 'incoming' GIF, for display via the DOM, here
+
+        var JCImage = $("<img>");
+
+        // using attribute methods to change sourcing, and the alt (what's displayed if there's no image to use)
+
+        JCImage.attr("src", imageUrl);
+        JCImage.attr("alt", "cat image");
+
+        // adding the image to the DOM, before the specified div (prepending, rather than appending)
+
+        $("#images").append(JCImage);
+      });
+    });
+  });
+});
+  </script>
+</body>
+
+</html>
