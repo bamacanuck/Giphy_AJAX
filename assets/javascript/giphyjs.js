@@ -1,3 +1,5 @@
+//Yeah, I stuck with animals.
+
 var topics = ["dog", "tiger", "monkey", "ape", "armadillo", "gila monster"];
 
 var apiKey = "9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd"
@@ -6,10 +8,6 @@ $(function () {
 	// console.log("page loaded")
 	buttonMaker(topics, "callButton");
 });
-
-// function addToTopics {
-
-// }
 
 $("#addAnimal").click (function() {
 	var nowQuery = $("#animal-input").val().trim();
@@ -37,7 +35,7 @@ $(document).on("click", ".callButton", function (){
 
 	var queryTerm = $(this).data("animal");
 
-// function callAndRender (searchTerm) {
+// This next bit lacks a small structural element, yet. It seems a matter of HTML or CSS, really. This is the in-window placement of the associated rating in relation to each GIF image.
 
 	$.ajax({
         url: "https://api.giphy.com/v1/gifs/search?q=" + queryTerm + "&api_key=" + apiKey + "&limit=10",
@@ -70,12 +68,12 @@ $(document).on("click", ".callButton", function (){
 $(document).on ("click", ".clickable", function () {
 	var mvmt = $(this).attr("data-state");
 	if (mvmt == "still") {
-		$(this).attr("src", $(this).data("forMovingGIF"));
-		$(this).attr("data-state", "forMovingGIF");
+		$(this).attr("src", $(this).data("moving"));
+		$(this).attr("data-state", "moving");
 	}
 	else {
-		$(this).attr("src", $(this).data("forStillGIF"));
-		$(this).attr("data-state", "forStillGIF");
+		$(this).attr("src", $(this).data("still"));
+		$(this).attr("data-state", "still");
 	}
 	// console.log ("you clicked... yep")
 });
