@@ -1,9 +1,9 @@
-var topics = ["dog", "tiger", "monkey", "ape", "armadillo", "x", "jasgdkjsgkjhdfklg", "z", "Lion-O", "MummRaa the EVER LIVING"];
+var topics = ["dog", "tiger", "monkey", "ape", "armadillo", "MummRaa the EVER LIVING"];
 
 // var apiKey = "9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd"
 
 $(function () {
-	console.log("page loaded")
+	// console.log("page loaded")
 	buttonMaker(topics);
 })
 
@@ -33,9 +33,10 @@ function callAndRender (searchTerm) {
         console.log(response);
 
         for (var i = 0; i < response.data.length; i++) {
-        	var newGIFMapper  = response.data[i].images.fixed_height_still.url;
+        	var forStillGIF  = response.data[i].images.fixed_height_still.url;
+        	var forMovingGIF  = response.data[i].images.fixed_height_downsampled.url;
         	var renderGIF = $("<img>");
-        	renderGIF.attr("src", newGIFMapper);
+        	renderGIF.attr("src", forMovingGIF);
         	var theRating = response.data[i].rating;
         	var showRating = $("<span>").text("rating: " + theRating);
         	$("#animals").append(renderGIF);
