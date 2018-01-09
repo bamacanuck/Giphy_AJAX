@@ -11,10 +11,11 @@ $(function () {
 
 // }
 
-$("addAnimal").click(function() {
-	var nowQuery = $("animal-input").val();
+$(document).on ("click", "#addAnimal", function() {
+	var nowQuery = $("#animal-input").val();
 	topics.push(nowQuery);
 	buttonMaker(topics, "callButton");
+	// console.log("you clicked it, alright");
 	event.preventDefault();
 })
 
