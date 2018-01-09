@@ -12,7 +12,7 @@ button {
 
 #animalButtons {
 	float: left;
-	height: 600px;
+	height: auto;
 	width: 70%;
 	/*border: 1px;*/
 }

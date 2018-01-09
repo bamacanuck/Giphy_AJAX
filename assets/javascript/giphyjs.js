@@ -1,17 +1,22 @@
-var topics = ["dog", "tiger", "monkey", "ape", "armadillo"];
+var topics = ["dog", "tiger", "monkey", "ape", "armadillo", "x", "jasgdkjsgkjhdfklg", "z", "Lion-O", "MummRaa the EVER LIVING"];
 
-var apiKey = "9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd"
+// var apiKey = "9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd"
 
 $(function () {
 	console.log("page loaded")
 	buttonMaker(topics);
 })
 
+// function addToTopics {
+
+// }
+
 function buttonMaker (array) {
 	$("#animalButtons").empty();
 	for (var i = 0; i < array.length; i++) {
 		var x = $("<button>");
 		x.text(array[i]);
+		x.attr("data-animal", array[i]);
 		$("#animalButtons").append(x);
 	}
 }
@@ -19,9 +24,12 @@ function buttonMaker (array) {
 function callAndRender (searchTerm) {
 	
 	$.ajax({
-        url: "https://api.giphy.com/v1/gifs/random?api_key=9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd&tag=" + searchTerm + "",
+        url: "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd&limit-10",
         method: "get"
       })
+
+// 	var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5");
+// xhr.done(function(data) { console.log("success got data", data); });
 
       // set instructions for after API response is received
 
@@ -46,7 +54,7 @@ function callAndRender (searchTerm) {
 
 }
 
-callAndRender("porg");
+callAndRender("dogs");
 
 
         // setting up a new image 'spot' for the 'incoming' GIF, for display via the DOM, here
