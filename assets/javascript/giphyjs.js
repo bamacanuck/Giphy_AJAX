@@ -4,27 +4,31 @@ var topics = ["dog", "tiger", "monkey", "ape", "armadillo", "MummRaa the EVER LI
 
 $(function () {
 	// console.log("page loaded")
-	buttonMaker(topics);
+	buttonMaker(topics, "callButton");
 })
 
 // function addToTopics {
 
 // }
 
-function buttonMaker (array) {
+function buttonMaker (array, newClass) {
 	$("#animalButtons").empty();
 	for (var i = 0; i < array.length; i++) {
 		var x = $("<button>");
 		x.text(array[i]);
 		x.attr("data-animal", array[i]);
+		x.addClass(newClass);
 		$("#animalButtons").append(x);
 	}
 }
 
-function callAndRender (searchTerm) {
+
+$(document).on("click", ".callButton", function (){
+
+// function callAndRender (searchTerm) {
 	
 	$.ajax({
-        url: "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd&limit=10",
+        url: "https://api.giphy.com/v1/gifs/search?q=" + "dogs" + "&api_key=9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd&limit=10",
         method: "get"
       })
 
@@ -54,11 +58,11 @@ function callAndRender (searchTerm) {
 
         // adding the image to the DOM, before the specified div (prepending, rather than appending)
 
-      });
+      })
 
-}
+});
 
-callAndRender("dogs");
+// callAndRender("dogs");
 
 
         // setting up a new image 'spot' for the 'incoming' GIF, for display via the DOM, here
