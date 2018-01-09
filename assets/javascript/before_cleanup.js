@@ -1,11 +1,11 @@
-var topics = ["dog", "tiger", "monkey", "ape", "armadillo", "gila monster"];
+var topics = ["dog", "tiger", "monkey", "ape", "armadillo"];
 
-var apiKey = "9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd"
+// var apiKey = "9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd"
 
 $(function () {
 	// console.log("page loaded")
 	buttonMaker(topics, "callButton");
-});
+})
 
 // function addToTopics {
 
@@ -28,7 +28,7 @@ function buttonMaker (array, newClass) {
 		x.addClass(newClass);
 		$("#animalButtons").append(x);
 	}
-};
+}
 
 
 $(document).on("click", ".callButton", function (){
@@ -40,7 +40,7 @@ $(document).on("click", ".callButton", function (){
 // function callAndRender (searchTerm) {
 
 	$.ajax({
-        url: "https://api.giphy.com/v1/gifs/search?q=" + queryTerm + "&api_key=" + apiKey + "&limit=10",
+        url: "https://api.giphy.com/v1/gifs/search?q=" + queryTerm + "&api_key=9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd&limit=10",
         method: "get"
       })
 
@@ -52,23 +52,34 @@ $(document).on("click", ".callButton", function (){
         	var forStillGIF  = response.data[i].images.fixed_height_still.url;
         	var forMovingGIF  = response.data[i].images.fixed_height.url;
         	var renderGIF = $("<img>");
-        	renderGIF.attr("src", forStillGIF);
+        	renderGIF.attr("src", forMovingGIF);
         	var theRating = response.data[i].rating;
         	var showRating = $("<span>").text("rating: " + theRating);
         	$("#animals").append(renderGIF);
         	$("#animals").append(showRating);
-        	renderGIF.addClass("clickable");
-        	renderGIF.attr("data-state", forStillGIF)
-        	renderGIF.attr("data-moving", forMovingGIF)
-        	renderGIF.attr("data-still", forStillGIF)
         }
+
+        // var imageUrl = response.data.image_original_url;
+
+        // var displayGIF = $("<img>");
+
+        // // using attribute methods to change sourcing, and the alt (what's displayed if there's no image to use)
+
+        // displayGIF.attr("src", imageUrl);
+        // displayGIF.attr("alt", "missing image");
+
+        // adding the image to the DOM, before the specified div (prepending, rather than appending)
 
       })
 
 });
 
-// $(".clickable").click (function () {
-// 	var movement = $(this).data("data-state");
+// callAndRender("dogs");
 
 
-// })
+        // setting up a new image 'spot' for the 'incoming' GIF, for display via the DOM, here
+
+
+
+	// var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd&limit=5"
+	// var imageUrl = response.data.image_original_url;
