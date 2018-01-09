@@ -58,7 +58,7 @@ $(document).on("click", ".callButton", function (){
         	$("#animals").append(renderGIF);
         	$("#animals").append(showRating);
         	renderGIF.addClass("clickable");
-        	renderGIF.attr("data-state", forStillGIF)
+        	renderGIF.attr("data-state", "forStillGIF")
         	renderGIF.attr("data-moving", forMovingGIF)
         	renderGIF.attr("data-still", forStillGIF)
         }
@@ -67,8 +67,15 @@ $(document).on("click", ".callButton", function (){
 
 });
 
-// $(".clickable").click (function () {
-// 	var movement = $(this).data("data-state");
-
-
-// })
+$(document).on ("click", ".clickable", function () {
+	var mvmt = $(this).attr("data-state");
+	if (mvmt == "still") {
+		$(this).attr("src", $(this).data("forMovingGIF"));
+		$(this).attr("data-state", "forMovingGIF");
+	}
+	else {
+		$(this).attr("src", $(this).data("forStillGIF"));
+		$(this).attr("data-state", "forStillGIF");
+	}
+	// console.log ("you clicked... yep")
+});
