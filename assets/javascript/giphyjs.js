@@ -36,6 +36,10 @@ function callAndRender (searchTerm) {
         	var newGIFMapper  = response.data[i].images.fixed_height_still.url;
         	var renderGIF = $("<img>");
         	renderGIF.attr("src", newGIFMapper);
+        	var theRating = response.data[i].rating;
+        	var showRating = $("<span>").text("rating: " + theRating);
+        	$("#animals").append(renderGIF);
+        	$("#animals").append(showRating);
         }
 
         // var imageUrl = response.data.image_original_url;
@@ -48,8 +52,6 @@ function callAndRender (searchTerm) {
         // displayGIF.attr("alt", "missing image");
 
         // adding the image to the DOM, before the specified div (prepending, rather than appending)
-
-		$("#animals").append(renderGIF);
 
       });
 
