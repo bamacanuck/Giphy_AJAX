@@ -11,6 +11,13 @@ $(function () {
 
 // }
 
+$("addAnimal").click(function() {
+	var nowQuery = $("animal-input").val();
+	topics.push(nowQuery);
+	buttonMaker(topics, "callButton");
+	event.preventDefault();
+})
+
 function buttonMaker (array, newClass) {
 	$("#animalButtons").empty();
 	for (var i = 0; i < array.length; i++) {
@@ -24,6 +31,8 @@ function buttonMaker (array, newClass) {
 
 
 $(document).on("click", ".callButton", function (){
+
+	$("#animals").empty();
 
 	var queryTerm = $(this).data("animal");
 
