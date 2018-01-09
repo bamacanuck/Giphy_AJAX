@@ -24,31 +24,32 @@ function buttonMaker (array) {
 function callAndRender (searchTerm) {
 	
 	$.ajax({
-        url: "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd&limit-10",
+        url: "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd&limit=10",
         method: "get"
       })
-
-// 	var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5");
-// xhr.done(function(data) { console.log("success got data", data); });
-
-      // set instructions for after API response is received
 
       .done(function(response) {
 
         console.log(response);
 
-        var imageUrl = response.data.image_original_url;
+        for (var i = 0; i < response.data.length; i++) {
+        	var newGIFMapper  = response.data[i].images.fixed_height_still.url;
+        	var renderGIF = $("<img>");
+        	renderGIF.attr("src", newGIFMapper);
+        }
 
-        var displayGIF = $("<img>");
+        // var imageUrl = response.data.image_original_url;
 
-        // using attribute methods to change sourcing, and the alt (what's displayed if there's no image to use)
+        // var displayGIF = $("<img>");
 
-        displayGIF.attr("src", imageUrl);
-        displayGIF.attr("alt", "missing image");
+        // // using attribute methods to change sourcing, and the alt (what's displayed if there's no image to use)
+
+        // displayGIF.attr("src", imageUrl);
+        // displayGIF.attr("alt", "missing image");
 
         // adding the image to the DOM, before the specified div (prepending, rather than appending)
 
-		$("#animals").append(displayGIF);
+		$("#animals").append(renderGIF);
 
       });
 
