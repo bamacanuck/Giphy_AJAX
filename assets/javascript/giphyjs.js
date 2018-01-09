@@ -25,10 +25,12 @@ function buttonMaker (array, newClass) {
 
 $(document).on("click", ".callButton", function (){
 
+	var queryTerm = $(this).data("animal");
+
 // function callAndRender (searchTerm) {
 	
 	$.ajax({
-        url: "https://api.giphy.com/v1/gifs/search?q=" + "dogs" + "&api_key=9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd&limit=10",
+        url: "https://api.giphy.com/v1/gifs/search?q=" + queryTerm + "&api_key=9Vbhzo58898EDFt3Wz5NL1r0dNbCo0Vd&limit=10",
         method: "get"
       })
 
